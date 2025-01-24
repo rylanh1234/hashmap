@@ -2,7 +2,7 @@ function HashMap() {
     return {
         loadFactor: 0.8,
         capacity: 16,
-        buckets: new Array(capacity),
+        buckets: new Array(this.capacity),
 
         hash(key) {
             let hashCode = 0;
@@ -22,15 +22,15 @@ function HashMap() {
             // create the bucket if not made yet
             if (!this.buckets[bucketIdx]) {
                 this.buckets[bucketIdx] = [];
+                this.buckets[bucketIdx].push([key, value]);
             }
-
             // check if the key already exists, if it does, then update the its value, if not, then add its value
             this.buckets[bucketIdx].forEach((pair) => {
                 if (pair[0] === key) {
                     pair[1] = value;
                 }
                 else {
-                    this.buckets[bucketIdx].push([key,value]);
+                    this.buckets[bucketIdx].push([key, value]);
                 }
             })
         },
@@ -104,11 +104,15 @@ function HashMap() {
         entries() {
             let pairsArray = [];
             this.buckets.forEach((bucket) => {
-                bucket.forEach((pair) => {
-                    pairsArray.push(pair);
-                })
+                if (bucket) {
+                    bucket.forEach((pair) => {
+                        pairsArray.push(pair);
+                    })
+                }
             })
             return pairsArray;
         },
     }
 }
+
+module.exports = { HashMap };
