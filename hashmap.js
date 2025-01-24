@@ -78,19 +78,37 @@ function HashMap() {
         },
 
         clear() {
-
+            this.buckets = new Array(this.capacity);
         },
 
         keys() {
-
+            let keysArray = [];
+            this.buckets.forEach((bucket) => {
+                bucket.forEach((pair) => {
+                    keysArray.push(pair[0]);
+                })
+            })
+            return keysArray;
         },
 
         values() {
-
+            let valuesArray = [];
+            this.buckets.forEach((bucket) => {
+                bucket.forEach((pair) => {
+                    valuesArray.push(pair[1]);
+                })
+            })
+            return valuesArray;
         },
 
         entries() {
-
+            let pairsArray = [];
+            this.buckets.forEach((bucket) => {
+                bucket.forEach((pair) => {
+                    pairsArray.push(pair);
+                })
+            })
+            return pairsArray;
         },
     }
 }
