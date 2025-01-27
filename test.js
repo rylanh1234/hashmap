@@ -15,4 +15,7 @@ test.set("jacket", "blue");
 test.set("kite", "pink");
 test.set("lion", "golden");
 
-console.log(test.entries())
+test.set("apple", "orange-red");
+console.log(test.length());
+
+// console.log(test.entries())

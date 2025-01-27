@@ -1,6 +1,6 @@
 function HashMap() {
     return {
-        loadFactor: 0.8,
+        loadFactor: 0.75,
         capacity: 16,
         buckets: new Array(this.capacity),
 
@@ -72,7 +72,9 @@ function HashMap() {
         length() {
             let length = 0;
             this.buckets.forEach((bucket) => {
-                length += bucket.length;
+                if (bucket) {
+                    length += bucket.length;
+                }
             })
             return length;
         },
