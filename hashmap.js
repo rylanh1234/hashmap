@@ -9,9 +9,9 @@ function HashMap() {
 
             const primeNumber = 31;
             for (let i = 0; i < key.length; i++) {
-                // % 16 for very long keys that would lead to hash codes that exceed the
+                // % this.capacity for very long keys that would lead to hash codes that exceed the
                 // maximum integer value allowed by JavaScript
-                hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % 16;
+                hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.capacity;
             }
 
             return hashCode;
@@ -33,6 +33,14 @@ function HashMap() {
                     this.buckets[bucketIdx].push([key, value]);
                 }
             })
+            if (this.length() > this.loadFactor * this.capacity) {
+                const pairsArray = this.entries();
+                this.capacity *= 2;
+                this.clear()
+                pairsArray.forEach((pair) => {
+                    this.set(pair[0], pair[1]);
+                })
+            }
         },
 
         get(key) {

@@ -16,6 +16,14 @@ test.set("kite", "pink");
 test.set("lion", "golden");
 
 test.set("apple", "orange-red");
-console.log(test.length());
+// console.log(test.length());
 
+test.set("moon", "silver");
+
+// console.log(test.buckets)
 // console.log(test.entries())
+
+test.set("moon", "cheese");
+// console.log(test.length());
+// console.log(test.entries());
+console.log(test.get("apple"));
