@@ -45,21 +45,21 @@ function HashMap() {
 
         get(key) {
             const bucketIdx = this.hash(key);
-            this.buckets[bucketIdx].forEach((pair) => {
+            for (const pair of this.buckets[bucketIdx]) {
                 if (pair[0] === key) {
                     return pair[1];
                 }
-            })
+            }
             return null;
         },
 
         has(key) {
             const bucketIdx = this.hash(key);
-            this.buckets[bucketIdx].forEach((pair) => {
+            for (const pair of this.buckets[bucketIdx]) {
                 if (pair[0] === key) {
                     return true;
                 }
-            })
+            }
             return false;
             // could do return this.get(key) !== null;
         },
@@ -67,13 +67,13 @@ function HashMap() {
         remove(key) {
             const bucketIdx = this.hash(key);
             let pairIdx = 0;
-            this.buckets[bucketIdx].forEach((pair) => {
+            for (const pair of this.buckets[bucketIdx]) {
                 if (pair[0] === key) {
                     this.buckets[bucketIdx].splice(pairIdx, 1);
                     return true;
                 }
                 pairIdx += 1;
-            })
+            }
             return false;
         },
 

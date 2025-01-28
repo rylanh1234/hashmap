@@ -26,4 +26,4 @@ test.set("moon", "silver");
 test.set("moon", "cheese");
 // console.log(test.length());
 // console.log(test.entries());
-console.log(test.get("apple"));
+console.log(test.get("moon"));
